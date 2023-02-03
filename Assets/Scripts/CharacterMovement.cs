@@ -22,14 +22,10 @@ public class CharacterMovement : MonoBehaviour
 
         rigidbody.velocity = new Vector3(moveDirection.x, rigidbody.velocity.y, moveDirection.z);
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && rigidbody.velocity.y == 0)
         {
-            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
+            rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
         }
-    }
-
-    private bool IsGrounded()
-    {
-        return Physics.Raycast(transform.position, -Vector3.up, 0.1f);
     }
 }
