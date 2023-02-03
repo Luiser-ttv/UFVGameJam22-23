@@ -3,11 +3,12 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     public float moveSpeed = 10.0f;
-    private CharacterController characterController;
+    public float jumpForce = 10.0f;
+    private Rigidbody rigidbody;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -19,6 +20,16 @@ public class CharacterMovement : MonoBehaviour
         moveDirection = transform.TransformDirection(moveDirection);
         moveDirection *= moveSpeed;
 
-        characterController.Move(moveDirection * Time.deltaTime);
+        rigidbody.velocity = new Vector3(moveDirection.x, rigidbody.velocity.y, moveDirection.z);
+
+        if (Input.GetButtonDown("Jump") && IsGrounded())
+        {
+            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, 0.1f);
     }
 }
