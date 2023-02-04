@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    public float moveSpeed = 10.0f;
-    public float jumpForce = 10.0f;
+    public float speed = 10.0f;
+
     private Rigidbody rigidbody;
 
     void Start()
@@ -13,19 +13,10 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 moveDirection = new Vector3(horizontal, 0, vertical);
-        moveDirection = transform.TransformDirection(moveDirection);
-        moveDirection *= moveSpeed;
-
-        rigidbody.velocity = new Vector3(moveDirection.x, rigidbody.velocity.y, moveDirection.z);
-
-        if (Input.GetKeyDown(KeyCode.Space) && rigidbody.velocity.y == 0)
-        {
-            rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
-            rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-        }
+        Vector3 movement = new Vector3(horizontalInput, verticalInput, 0);
+        rigidbody.velocity = movement * speed;
     }
 }
