@@ -40,16 +40,18 @@ public class Inventory : MonoBehaviour
                     collider.gameObject.SetActive(false);
                     break;
                 }
-                else if (collider.gameObject.CompareTag("Transformer") && items.Count != 0)
+                else if (collider.gameObject.CompareTag("Transformer") && items.Count != 0 && items.Count < 2)
                 {
                     
                     items.Clear();
                     items.Add(colliderConverted.gameObject);
+                    //collider.gameObject.SetActive()
                     break;
                 }
                 else if (collider.gameObject.CompareTag("Deleter") && items.Count != 0)
                 {
                     items.Clear();
+                    
                     break;
                 }
             }
