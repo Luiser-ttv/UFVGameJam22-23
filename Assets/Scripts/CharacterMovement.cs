@@ -18,5 +18,6 @@ public class CharacterMovement : MonoBehaviour
 
         Vector3 movement = new Vector3(horizontalInput, verticalInput, 0);
         rigidbody.velocity = movement * speed;
+
     }
 }

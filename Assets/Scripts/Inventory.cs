@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
     public Vector2 itemDisplaySize = new Vector2(50, 50);
     public int itemsPerColumn = 5;
     private int currentColumn = 0;
+    public GameObject colliderConverted;
 
     void OnGUI()
     {
@@ -29,6 +30,7 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log(items.Count);
             Collider[] colliders = Physics.OverlapSphere(transform.position, pickupRadius);
             foreach (Collider collider in colliders)
             {
@@ -36,6 +38,18 @@ public class Inventory : MonoBehaviour
                 {
                     items.Add(collider.gameObject);
                     collider.gameObject.SetActive(false);
+                    break;
+                }
+                else if (collider.gameObject.CompareTag("Transformer") && items.Count != 0)
+                {
+                    
+                    items.Clear();
+                    items.Add(colliderConverted.gameObject);
+                    break;
+                }
+                else if (collider.gameObject.CompareTag("Deleter") && items.Count != 0)
+                {
+                    items.Clear();
                     break;
                 }
             }

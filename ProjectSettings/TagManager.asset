@@ -50,6 +50,12 @@ TagManager:
   - name: BackHouse
     uniqueID: 4267861199
     locked: 0
+  - name: NPC
+    uniqueID: 1262189579
+    locked: 0
+  - name: Object
+    uniqueID: 369885655
+    locked: 0
   - name: Player
     uniqueID: 809215097
     locked: 0
