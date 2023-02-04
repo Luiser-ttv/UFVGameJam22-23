@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Pickup
+  - Interactable
+  - QuickText
   layers:
   - Default
   - TransparentFX
@@ -40,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 274293851
+    locked: 0
+  - name: BackHouse
+    uniqueID: 4267861199
+    locked: 0
+  - name: Player
+    uniqueID: 809215097
+    locked: 0
+  - name: FrontHouse
+    uniqueID: 2423483165
     locked: 0

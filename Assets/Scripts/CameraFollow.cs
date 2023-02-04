@@ -8,8 +8,13 @@ public class CameraFollow : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 desiredPosition = target.position + offset; // Posición deseada de la cámara
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed); // Posición suavizada
-        transform.position = smoothedPosition; // Asignamos la posición suavizada a la cámara
+        
+        if ((target.position.x > -11 && target.position.x < 11) || (target.position.y > -1 && target.position.x > -11 && target.position.x < 11))
+        {
+            Vector3 desiredPosition = target.position + offset; // Posición deseada de la cámara
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed); // Posición suavizada
+            transform.position = smoothedPosition; // Asignamos la posición suavizada a la cámara
+        }
+      
     }
 }
