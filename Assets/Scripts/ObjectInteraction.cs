@@ -5,8 +5,12 @@ using TMPro;
 public class ObjectInteraction : MonoBehaviour
 {
     public List<string> dialogueLines;
+    public List<string> dialogueLinesTransform;
+    public List<string> dialogueLinesWitch;
     public float interactionRadius = 2.0f;
     public bool showDialogue = false;
+    public bool showDialogueTransform = false;
+    public bool showDialogueWitch = false;
     public bool dialogueFinished = false;
     public TMP_Text dialogueText;
 
@@ -28,6 +32,18 @@ public class ObjectInteraction : MonoBehaviour
                 if (collider.gameObject.CompareTag("Interactable"))
                 {
                     showDialogue = true;
+                    characterMovement.enabled = false;
+                    break;
+                }
+                else if (collider.gameObject.CompareTag("TransformDone"))
+                {
+                    showDialogueTransform = true;
+                    characterMovement.enabled = false;
+                    break;
+                }
+                else if (collider.gameObject.CompareTag("Hunted"))
+                {
+                    showDialogueWitch = true;
                     characterMovement.enabled = false;
                     break;
                 }
@@ -55,5 +71,49 @@ public class ObjectInteraction : MonoBehaviour
                 currentLineIndex = 0;
             }
         }
+        else if (showDialogueTransform)
+        {
+            dialogueText.gameObject.SetActive(true);
+
+            if (currentLineIndex < dialogueLinesTransform.Count)
+            {
+                dialogueText.text = dialogueLinesTransform[currentLineIndex];
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    currentLineIndex++;
+                }
+            }
+            else
+            {
+                dialogueFinished = true;
+                showDialogueTransform = false;
+                characterMovement.enabled = true;
+                dialogueText.gameObject.SetActive(false);
+                currentLineIndex = 0;
+            }
+        }
+        else if (showDialogueWitch)
+        {
+            dialogueText.gameObject.SetActive(true);
+
+            if (currentLineIndex < dialogueLinesWitch.Count)
+            {
+                dialogueText.text = dialogueLinesWitch[currentLineIndex];
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    currentLineIndex++;
+                }
+            }
+            else
+            {
+                dialogueFinished = true;
+                showDialogueWitch = false;
+                characterMovement.enabled = true;
+                dialogueText.gameObject.SetActive(false);
+                currentLineIndex = 0;
+            }
+        }
+
+
     }
 }

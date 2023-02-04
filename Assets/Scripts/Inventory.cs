@@ -45,7 +45,7 @@ public class Inventory : MonoBehaviour
                     
                     items.Clear();
                     items.Add(colliderConverted.gameObject);
-                    //collider.gameObject.SetActive()
+                    collider.gameObject.tag = "TransformDone";
                     break;
                 }
                 else if (collider.gameObject.CompareTag("Deleter") && items.Count != 0)
