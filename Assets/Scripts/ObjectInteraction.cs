@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ObjectInteraction : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ObjectInteraction : MonoBehaviour
     public List<string> dialogueLinesVendor;
     public List<string> dialogueLinesAngry;
     public List<string> dialogueLinesDelDone;
+    public List<string> dialogueLinesDoc;
 
     public float interactionRadius = 2.0f;
 
@@ -19,6 +21,7 @@ public class ObjectInteraction : MonoBehaviour
     public bool showDialogueVendor = false;
     public bool showDialogueAngry = false;
     public bool showDialogueDelDone = false;
+    public bool showDialogueDoc = false;
 
     public bool dialogueFinished = false;
     public TMP_Text dialogueText;
@@ -27,6 +30,7 @@ public class ObjectInteraction : MonoBehaviour
     private int currentLineIndex = 0;
     private CharacterMovement characterMovement;
 
+    public GameObject Medina;
     void Start()
     {
         characterMovement = GetComponent<CharacterMovement>();
@@ -72,6 +76,12 @@ public class ObjectInteraction : MonoBehaviour
                 else if (collider.gameObject.CompareTag("DeleterDone"))
                 {
                     showDialogueDelDone = true;
+                    characterMovement.enabled = false;
+                    break;
+                }
+                else if (collider.gameObject.CompareTag("Doctor"))
+                {
+                    showDialogueDoc = true;
                     characterMovement.enabled = false;
                     break;
                 }
@@ -214,6 +224,36 @@ public class ObjectInteraction : MonoBehaviour
                 dialogueText.gameObject.SetActive(false);
                 dialogueFrame.gameObject.SetActive(false);
                 currentLineIndex = 0;
+            }
+        }
+        else if (showDialogueDoc)
+        {
+            dialogueText.gameObject.SetActive(true);
+            dialogueFrame.gameObject.SetActive(true);
+
+            if (currentLineIndex < dialogueLinesDoc.Count)
+            {
+                dialogueText.text = dialogueLinesDoc[currentLineIndex];
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    currentLineIndex++;
+                    
+                }
+                if (currentLineIndex > 5)
+                {
+                    Medina.SetActive(true);
+                }
+            }
+            else
+            {
+                dialogueFinished = true;
+                showDialogueDoc = false;
+                characterMovement.enabled = true;
+                dialogueText.gameObject.SetActive(false);
+                dialogueFrame.gameObject.SetActive(false);
+                Medina.SetActive(false);
+                currentLineIndex = 0;
+                SceneManager.LoadScene(0);
             }
         }
 
