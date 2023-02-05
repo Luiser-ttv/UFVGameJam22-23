@@ -7,6 +7,13 @@ TagManager:
   - Pickup
   - Interactable
   - QuickText
+  - DeleterDone
+  - Angry
+  - Hunted
+  - TransformDone
+  - Vendor
+  - Transformer
+  - Deleter
   layers:
   - Default
   - TransparentFX
@@ -61,4 +68,7 @@ TagManager:
     locked: 0
   - name: FrontHouse
     uniqueID: 2423483165
+    locked: 0
+  - name: UI
+    uniqueID: 1982709183
     locked: 0

@@ -22,6 +22,7 @@ public class ObjectInteraction : MonoBehaviour
 
     public bool dialogueFinished = false;
     public TMP_Text dialogueText;
+    public GameObject dialogueFrame;
 
     private int currentLineIndex = 0;
     private CharacterMovement characterMovement;
@@ -80,6 +81,7 @@ public class ObjectInteraction : MonoBehaviour
         if (showDialogue)
         {
             dialogueText.gameObject.SetActive(true);
+            dialogueFrame.gameObject.SetActive(true);
 
             if (currentLineIndex < dialogueLines.Count)
             {
@@ -95,12 +97,14 @@ public class ObjectInteraction : MonoBehaviour
                 showDialogue = false;
                 characterMovement.enabled = true;
                 dialogueText.gameObject.SetActive(false);
+                dialogueFrame.gameObject.SetActive(false);
                 currentLineIndex = 0;
             }
         }
         else if (showDialogueTransform)
         {
             dialogueText.gameObject.SetActive(true);
+            dialogueFrame.gameObject.SetActive(true);
 
             if (currentLineIndex < dialogueLinesTransform.Count)
             {
@@ -116,12 +120,14 @@ public class ObjectInteraction : MonoBehaviour
                 showDialogueTransform = false;
                 characterMovement.enabled = true;
                 dialogueText.gameObject.SetActive(false);
+                dialogueFrame.gameObject.SetActive(false);
                 currentLineIndex = 0;
             }
         }
         else if (showDialogueWitch)
         {
             dialogueText.gameObject.SetActive(true);
+            dialogueFrame.gameObject.SetActive(true);
 
             if (currentLineIndex < dialogueLinesWitch.Count)
             {
@@ -137,12 +143,14 @@ public class ObjectInteraction : MonoBehaviour
                 showDialogueWitch = false;
                 characterMovement.enabled = true;
                 dialogueText.gameObject.SetActive(false);
+                dialogueFrame.gameObject.SetActive(false);
                 currentLineIndex = 0;
             }
         }
         else if (showDialogueVendor)
         {
             dialogueText.gameObject.SetActive(true);
+            dialogueFrame.gameObject.SetActive(true);
 
             if (currentLineIndex < dialogueLinesVendor.Count)
             {
@@ -158,12 +166,14 @@ public class ObjectInteraction : MonoBehaviour
                 showDialogueVendor = false;
                 characterMovement.enabled = true;
                 dialogueText.gameObject.SetActive(false);
+                dialogueFrame.gameObject.SetActive(false);
                 currentLineIndex = 0;
             }
         }
         else if (showDialogueAngry)
         {
             dialogueText.gameObject.SetActive(true);
+            dialogueFrame.gameObject.SetActive(true);
 
             if (currentLineIndex < dialogueLinesAngry.Count)
             {
@@ -179,12 +189,14 @@ public class ObjectInteraction : MonoBehaviour
                 showDialogueAngry = false;
                 characterMovement.enabled = true;
                 dialogueText.gameObject.SetActive(false);
+                dialogueFrame.gameObject.SetActive(false);
                 currentLineIndex = 0;
             }
         }
         else if (showDialogueDelDone)
         {
             dialogueText.gameObject.SetActive(true);
+            dialogueFrame.gameObject.SetActive(true);
 
             if (currentLineIndex < dialogueLinesDelDone.Count)
             {
@@ -200,6 +212,7 @@ public class ObjectInteraction : MonoBehaviour
                 showDialogueDelDone = false;
                 characterMovement.enabled = true;
                 dialogueText.gameObject.SetActive(false);
+                dialogueFrame.gameObject.SetActive(false);
                 currentLineIndex = 0;
             }
         }

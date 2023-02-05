@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     public int itemsPerColumn = 5;
     private int currentColumn = 0;
     public GameObject colliderConverted;
+    public Transform targetPassed;
 
     void OnGUI()
     {
@@ -52,6 +53,11 @@ public class Inventory : MonoBehaviour
                 {
                     items.Clear();
                     GameObject.Find("Alfred").GetComponent<NextScene>().isDelivered = true;
+                    GameObject.Find("Main Camera").GetComponent<CameraFollow>().target = targetPassed;
+                    float temp = 8.66f;
+                    GameObject.Find("Main Camera").transform.position = new Vector3(GameObject.Find("Main Camera").transform.position.x, temp, GameObject.Find("Main Camera").transform.position.z); ;
+
+
                     collider.gameObject.tag = "DeleterDone";
                     break;
                 }
