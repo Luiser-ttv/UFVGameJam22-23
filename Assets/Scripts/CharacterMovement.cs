@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
+        
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -28,6 +29,7 @@ public class CharacterMovement : MonoBehaviour
         {
             //Debug.Log("test");
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
+
         }
 
     }
