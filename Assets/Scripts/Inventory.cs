@@ -51,7 +51,8 @@ public class Inventory : MonoBehaviour
                 else if (collider.gameObject.CompareTag("Deleter") && items.Count != 0)
                 {
                     items.Clear();
-                    
+                    GameObject.Find("Alfred").GetComponent<NextScene>().isDelivered = true;
+                    collider.gameObject.tag = "DeleterDone";
                     break;
                 }
             }

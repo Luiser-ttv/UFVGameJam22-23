@@ -7,10 +7,19 @@ public class ObjectInteraction : MonoBehaviour
     public List<string> dialogueLines;
     public List<string> dialogueLinesTransform;
     public List<string> dialogueLinesWitch;
+    public List<string> dialogueLinesVendor;
+    public List<string> dialogueLinesAngry;
+    public List<string> dialogueLinesDelDone;
+
     public float interactionRadius = 2.0f;
+
     public bool showDialogue = false;
     public bool showDialogueTransform = false;
     public bool showDialogueWitch = false;
+    public bool showDialogueVendor = false;
+    public bool showDialogueAngry = false;
+    public bool showDialogueDelDone = false;
+
     public bool dialogueFinished = false;
     public TMP_Text dialogueText;
 
@@ -44,6 +53,24 @@ public class ObjectInteraction : MonoBehaviour
                 else if (collider.gameObject.CompareTag("Hunted"))
                 {
                     showDialogueWitch = true;
+                    characterMovement.enabled = false;
+                    break;
+                }
+                else if (collider.gameObject.CompareTag("Vendor"))
+                {
+                    showDialogueVendor = true;
+                    characterMovement.enabled = false;
+                    break;
+                }
+                else if (collider.gameObject.CompareTag("Angry"))
+                {
+                    showDialogueAngry = true;
+                    characterMovement.enabled = false;
+                    break;
+                }
+                else if (collider.gameObject.CompareTag("DeleterDone"))
+                {
+                    showDialogueDelDone = true;
                     characterMovement.enabled = false;
                     break;
                 }
@@ -108,6 +135,69 @@ public class ObjectInteraction : MonoBehaviour
             {
                 dialogueFinished = true;
                 showDialogueWitch = false;
+                characterMovement.enabled = true;
+                dialogueText.gameObject.SetActive(false);
+                currentLineIndex = 0;
+            }
+        }
+        else if (showDialogueVendor)
+        {
+            dialogueText.gameObject.SetActive(true);
+
+            if (currentLineIndex < dialogueLinesVendor.Count)
+            {
+                dialogueText.text = dialogueLinesVendor[currentLineIndex];
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    currentLineIndex++;
+                }
+            }
+            else
+            {
+                dialogueFinished = true;
+                showDialogueVendor = false;
+                characterMovement.enabled = true;
+                dialogueText.gameObject.SetActive(false);
+                currentLineIndex = 0;
+            }
+        }
+        else if (showDialogueAngry)
+        {
+            dialogueText.gameObject.SetActive(true);
+
+            if (currentLineIndex < dialogueLinesAngry.Count)
+            {
+                dialogueText.text = dialogueLinesAngry[currentLineIndex];
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    currentLineIndex++;
+                }
+            }
+            else
+            {
+                dialogueFinished = true;
+                showDialogueAngry = false;
+                characterMovement.enabled = true;
+                dialogueText.gameObject.SetActive(false);
+                currentLineIndex = 0;
+            }
+        }
+        else if (showDialogueDelDone)
+        {
+            dialogueText.gameObject.SetActive(true);
+
+            if (currentLineIndex < dialogueLinesDelDone.Count)
+            {
+                dialogueText.text = dialogueLinesDelDone[currentLineIndex];
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    currentLineIndex++;
+                }
+            }
+            else
+            {
+                dialogueFinished = true;
+                showDialogueDelDone = false;
                 characterMovement.enabled = true;
                 dialogueText.gameObject.SetActive(false);
                 currentLineIndex = 0;

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class KidDrop : MonoBehaviour
 {
+    public GameObject apple;
     // Start is called before the first frame update
     void Start()
     {
         GameObject.Find("Vendor").tag = "Angry";
-        GameObject.Find("Apple").SetActive(true);
+        apple.SetActive(true);
     }
 
 }

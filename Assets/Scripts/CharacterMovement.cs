@@ -19,5 +19,16 @@ public class CharacterMovement : MonoBehaviour
         Vector3 movement = new Vector3(horizontalInput, verticalInput, 0);
         rigidbody.velocity = movement * speed;
 
+        if (Input.GetKeyDown("a") || Input.GetKeyDown("left"))
+        {
+            //Debug.Log("test");
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (Input.GetKeyDown("d") || Input.GetKeyDown("right"))
+        {
+            //Debug.Log("test");
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
+
     }
 }
