@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        
     }
 
     void Update()
@@ -24,6 +25,7 @@ public class CharacterMovement : MonoBehaviour
         {
             //Debug.Log("test");
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
+
         }
         else if (Input.GetKeyDown("d") || Input.GetKeyDown("right"))
         {

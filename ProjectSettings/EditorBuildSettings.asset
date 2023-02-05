@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiddleAge.unity
     guid: 5a563a8dfc369534bbd97a31bbc264a9
+  - enabled: 1
+    path: Assets/Scenes/Lab1.unity
+    guid: ccd5f6102cfb64f48bf739b9b41025bf
   m_configObjects: {}

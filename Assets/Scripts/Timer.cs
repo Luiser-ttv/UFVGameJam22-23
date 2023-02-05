@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -19,8 +20,15 @@ public class Timer : MonoBehaviour
 
         if (timeRemaining <= 0)
         {
-            // Detener la escena aqui
-            Time.timeScale = 0;
+            if (GameObject.Find("Alfred").GetComponent<NextScene>().isDelivered == true)
+            {
+                SceneManager.LoadScene(2);
+            }
+            else
+            {
+                SceneManager.LoadScene(1);
+            }
+            
         }
     }
 }

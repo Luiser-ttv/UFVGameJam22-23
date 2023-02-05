@@ -14,6 +14,7 @@ public class WithcHunt : MonoBehaviour
 
     void PerformAction()
     {
+        Debug.Log("Hunt");
         // Acción que quieres que se realice cada "timeInterval" segundos.
         if (GameObject.Find("Calderus").tag == "Transformer")
         {
